@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医療情報セキュリティ・アーカイブ | Incident Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --main-text: #4a5568;
+            --accent-pink: #ffafcc;
+            --accent-blue: #a2d2ff;
+            --accent-green: #b9fbc0;
+            --accent-yellow: #fcf6bd;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--main-text);
+            font-family: 'Zen Maru Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* 背景のまるいふわふわ */
+        .shape {
+            position: fixed;
+            z-index: -1;
+            filter: blur(50px);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+        .shape-1 { width: 400px; height: 400px; background: var(--accent-pink); top: -100px; right: -100px; }
+        .shape-2 { width: 350px; height: 350px; background: var(--accent-blue); bottom: -50px; left: -100px; }
+        .shape-3 { width: 200px; height: 200px; background: var(--accent-green); top: 30%; left: 10%; }
+
+        header {
+            background: linear-gradient(135deg, #a2d2ff 0%, #ffafcc 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            border-radius: 0 0 80px 80px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 0.05em;
+        }
+
+        main {
+            max-width: 850px;
+            margin: -40px auto 100px;
+            padding: 0 15px;
+        }
+
+        .report-card {
+            background: var(--card-bg);
+            border: 4px solid #fff;
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            display: inline-block;
+            background: var(--accent-yellow);
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #6b705c;
+        }
+        h2:first-child { margin-top: 0; }
+
+        h3 {
+            font-size: 1.05rem;
+            color: #d4a373;
+            border-left: 5px solid var(--accent-pink);
+            padding-left: 15px;
+            margin: 25px 0 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            background: rgba(255,255,255,0.5);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #a0aec0;
+            display: block;
+        }
+
+        .list-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .list-item::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .highlight-box {
+            background: #fff;
+            border: 3px dashed var(--accent-blue);
+            padding: 20px;
+            border-radius: 25px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        /* 画面が揺れるアニメーション（少しだけ不安感を演出） */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .report-card { animation: float 6s ease-in-out infinite; }
+
+        @media (max-width: 600px) {
+            .report-card { padding: 25px; border-radius: 30px; }
+            h1 { font-size: 1.2rem; }
+            h2 { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+
+    <header>
+        <div class="header-content">
+            <h1>医療情報セキュリティ・インシデントレポート</h1>
+            <p>（確定版）</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="report-card">
+            
+            <h2>1. 発生事案の概要</h2>
+            <div class="info-grid">
+                <div class="info-item"><span class="info-label">発生日時</span>202X年 月 日（○曜日）</div>
+                <div class="info-item"><span class="info-label">報告者</span>医師A（○○科）</div>
+                <div class="info-item"><span class="info-label">当事者</span>医師A、および協力者 医師B</div>
+                <div class="info-item"><span class="info-label">対象情報</span>患者XのMRI画像データ 8回分</div>
+            </div>
+
+            <h2>2. 事象の経過</h2>
+            <div class="list-item"><strong>問題の発生：</strong> 医師AのPCに光学ドライブが搭載されていないというハードウェアの機能不全により、読み込みが不可能であった。</div>
+            <div class="list-item"><strong>不適切な判断：</strong> 医師Bに協力を依頼。医師BのPCでディスクを読み込ませた。</div>
+            <div class="list-item"><strong>規約外のデータ転送：</strong> 個人アカウントを用い、Google Driveへアップロード。共有範囲を限定し、医師AのPCへダウンロード。</div>
+            <div class="list-item"><strong>インシデントの露呈：</strong> 作業後、医師BのPCに当該CDを回収し忘れ、物理媒体が放置される状態となった。</div>
+
+            <h2>3. インシデントの本質と問題点</h2>
+            <div class="list-item"><strong>シャドーITの利用：</strong> 許可されていないクラウドサービスへのアップロード。</div>
+            <div class="list-item"><strong>物理媒体の管理不備：</strong> 管理権限のない場所への放置。</div>
+            <div class="list-item"><strong>技術的対策の誤り：</strong> 正規の申請ではなく、個人の判断による不適切な代替手段を選択。</div>
+
+            <h2>4. 原因分析</h2>
+            <div class="highlight-box">
+                診療に必要な環境が備わっていなかった「環境整備の遅れ」と、「利便性の優先」、そして非定型作業による「確認プロセスの欠如」が重なった結果である。
+            </div>
+
+            <h2>5. リスクと影響</h2>
+            <div class="list-item">クラウド上やPCキャッシュへのデータ残存。</div>
+            <div class="list-item">Googleアカウント乗っ取りによる流出リスク。</div>
+            <div class="list-item">厚生労働省ガイドライン「外部保存の原則」への抵触。</div>
+
+            <h2>6. 再発防止策および是正措置</h2>
+            <h3>即時対応</h3>
+            <p>データの完全消去の確認、および放置されたCDの即時回収。</p>
+            
+            <h3>環境改善・教育</h3>
+            <p>病院指定の光学ドライブを正式に申請・導入すること。また、個人アカウントの利用は「外部流出」と同義であることを再周知する。</p>
+
+        </div>
+    </main>
+
+    <div class="footer">
+        このレポートは、再発防止を願う「不甲斐ない管理者」によって作成されました。<br>
+        &copy; Security Management Dept.
+    </div>
+
+</body>
+</html>
